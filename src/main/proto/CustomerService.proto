@@ -1,0 +1,25 @@
+syntax = "proto3";
+option java_multiple_files = true;
+package br.com.rformagio.grpc.server.grpcserver;
+
+message Customer {
+  string customer_id = 1;
+  string first_name = 2;
+  string last_name = 3;
+  string email = 4;
+  repeated string phone_numbers = 5;
+  int32 age = 6;     // Add an age field of type int32
+  double balance = 7; // Add a balance field of type double
+}
+
+message CustomerRequest {
+  Customer customer = 1;
+}
+
+message CustomerResponse {
+  string message = 1;
+}
+
+service CustomerService {
+  rpc RegisterCustomer(CustomerRequest) returns (CustomerResponse);
+}
